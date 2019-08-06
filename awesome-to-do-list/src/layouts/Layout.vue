@@ -21,7 +21,10 @@
     </q-header>
 
     <q-footer>
-        
+        <q-tabs>
+            <q-route-tab to="/" icon="list" label="Todo List"/>
+            <q-route-tab to="/settings" icon="settings" label="Settings"/>
+        </q-tabs>
     </q-footer>
     <q-drawer
       v-model="leftDrawerOpen"
