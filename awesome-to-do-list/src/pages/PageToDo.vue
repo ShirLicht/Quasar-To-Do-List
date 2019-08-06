@@ -57,37 +57,19 @@
 
 
 <script>
+
+import {mapGetters} from 'vuex';
+
 export default {
    name: 'PageToDo',
-  data() {
-    return {
-        tasks: [
-        {
-          id:1,
-          name: 'Go to shop',
-          completed: false,
-          dueDate: '2019/08/07',
-          dueTime: '18:30'
-
-        },
-        {
-          id:2,
-          name: 'Get bananas',
-          completed: false,
-          dueDate: '2019/08/08',
-          dueTime: '14:00'
-        },
-        {
-          id:3,
-          name: 'Get apples',
-          completed: false,
-          dueDate: '2019/08/08',
-          dueTime: '14:30'
-        }
-          ]
-    }
+   computed : {
+     /*tasks() {
+       //get the tasks array from the store-tasks module
+       return this.$store.getters['tasks/tasks']
+     }*/
+     ...mapGetters('tasks', ['tasks'])
+   }
     
-  }
 }
 </script>
 
