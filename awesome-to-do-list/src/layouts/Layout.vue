@@ -20,6 +20,9 @@
       </q-toolbar>
     </q-header>
 
+    <q-footer>
+        
+    </q-footer>
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
