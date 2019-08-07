@@ -1,3 +1,4 @@
+import Vue from 'vue'
 
 const state = {
   tasks: {
@@ -55,6 +56,11 @@ const mutations = {
   updateTask(state, payload){
     //Object.assign - allows to copy properties from one object to another
     Object.assign(state.tasks[payload.id], payload.updates);
+  },
+  deleteTask(state, id){
+    //in Vue.js when we want to delete a keyed object from the state/ add a new object to the state - in order to keep it reactive we need to use a builtin Vue methods
+    //use Vue delete method in order to delete a task 
+    Vue.delete(state.tasks, id)
   }
 }
 
@@ -63,9 +69,14 @@ const actions = {
     //update a task state - completed/not completed
     //inputs - an object and payload (payload is the input that is coming from the source that calls the function )
     updateTask({ commit }, payload){
-      //call a mutation
-        commit('updateTask',payload)
+      //call a mutation - fire the 'updateTask' mutation
+        commit('updateTask', payload)
+    },
+    deleteTask({ commit }, id){
+      //fire the 'deleteTask' mutation
+      commit('deleteTask', id)
     }
+
 }
 
 // methods that get the data from the state and later can be used by the components

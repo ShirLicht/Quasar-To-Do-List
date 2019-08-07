@@ -40,7 +40,10 @@
             </div>
 
           </q-item-section>
-
+        
+          <q-item-section side>
+              <q-btn flat round dense color="red" icon="delete" @click.stop="promptToDelete(id)"/>
+          </q-item-section>
       </q-item>
 </template>
 
@@ -51,7 +54,22 @@ export default {
     props: ['task', 'id'],
     methods: {
         //mapping an action to the component
-        ...mapActions('tasks', ['updateTask'])
+        ...mapActions('tasks', ['updateTask', 'deleteTask']),
+        promptToDelete(id){
+           this.$q.dialog({
+               title:'Confirm',
+               message:'Are you sure you want to delete the task?',
+               ok: {
+                   push: true
+               },
+               cancel: {
+                   color: 'negative'
+               },
+               presistent: true
+           }).onOk(() => {
+               this.deleteTask(id)
+           }) 
+        }
     }
 }
 </script>
