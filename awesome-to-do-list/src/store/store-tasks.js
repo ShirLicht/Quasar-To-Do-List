@@ -1,6 +1,28 @@
 
 const state = {
-    tasks: [
+  tasks: {
+    'ID1': {
+      name: 'Go to shop',
+      completed: false,
+      dueDate: '2019/08/07',
+      dueTime: '18:30'
+    },
+    'ID2': {
+      name: 'Get bananas',
+      completed: false,
+      dueDate: '2019/08/08',
+      dueTime: '14:00'
+    }, 
+    'ID3': {
+      name: 'Get apples',
+      completed: false,
+      dueDate: '2019/08/08',
+      dueTime: '14:30'
+    },
+    
+  } 
+  
+  /* tasks: [
         {
           id:1,
           name: 'Go to shop',
@@ -23,7 +45,8 @@ const state = {
           dueDate: '2019/08/08',
           dueTime: '14:30'
         }
-          ]
+          ]*/
+
 }
 
 //methods that will manipulate the states

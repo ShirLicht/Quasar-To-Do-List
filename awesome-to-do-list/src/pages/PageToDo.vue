@@ -5,8 +5,8 @@
       <q-list separator borderd>
 
       <q-item
-       v-for="task in tasks"
-       :key="task.id"
+       v-for="(task, key) in tasks"
+       :key="key"
        @click="task.completed = !task.completed"
        clickable
        v-ripple
