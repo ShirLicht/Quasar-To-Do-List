@@ -7,7 +7,8 @@
       <Task
        v-for="(task, key) in tasks"
        :key="key"
-       :task="task"></Task>
+       :task="task"
+       :id="key"></Task>
 
     </q-list>
 
