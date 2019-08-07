@@ -52,12 +52,20 @@ const state = {
 //methods that will manipulate the states
 //The methods --can not be asnyc--
 const mutations = {
-
+  updateTask(state, payload){
+    //Object.assign - allows to copy properties from one object to another
+    Object.assign(state.tasks[payload.id], payload.updates);
+  }
 }
 
 // methods - can be async
 const actions = {
-
+    //update a task state - completed/not completed
+    //inputs - an object and payload (payload is the input that is coming from the source that calls the function )
+    updateTask({ commit }, payload){
+      //call a mutation
+        commit('updateTask',payload)
+    }
 }
 
 // methods that get the data from the state and later can be used by the components
