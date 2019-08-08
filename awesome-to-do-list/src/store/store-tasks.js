@@ -1,8 +1,9 @@
 import Vue from 'vue'
+import { uid } from 'quasar'
 
 const state = {
   tasks: {
-    'ID1': {
+    /*'ID1': {
       name: 'Go to shop',
       completed: false,
       dueDate: '2019/08/07',
@@ -21,7 +22,8 @@ const state = {
       dueTime: '14:30'
     },
     
-  } 
+  } */
+      }
   
   /* tasks: [
         {
@@ -61,6 +63,12 @@ const mutations = {
     //in Vue.js when we want to delete a keyed object from the state/ add a new object to the state - in order to keep it reactive we need to use a builtin Vue methods
     //use Vue delete method in order to delete a task 
     Vue.delete(state.tasks, id)
+  },
+  addTask(state, payload){
+    //1st - object we want to update
+    //2nd - key of the object we want to add
+    //3rd - the data we want to store inside the new object
+    Vue.set(state.tasks, payload.id, payload.task)
   }
 }
 
@@ -75,6 +83,19 @@ const actions = {
     deleteTask({ commit }, id){
       //fire the 'deleteTask' mutation
       commit('deleteTask', id)
+    },
+    addTask({ commit }, task){
+      //generate a unique id for the new task 
+      let taskId = uid()
+
+      //gather the input for the 'addTask' mutation - id + task's details
+      let payload = {
+        id: taskId,
+        task: task
+      }
+
+      //fire the 'addTask' mutation
+      commit('addTask', payload)
     }
 
 }
