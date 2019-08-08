@@ -3,7 +3,7 @@ import { uid } from 'quasar'
 
 const state = {
   tasks: {
-    /*'ID1': {
+    'ID1': {
       name: 'Go to shop',
       completed: false,
       dueDate: '2019/08/07',
@@ -20,9 +20,9 @@ const state = {
       completed: false,
       dueDate: '2019/08/08',
       dueTime: '14:30'
-    },
+    }
     
-  } */
+  } 
       }
   
   /* tasks: [
@@ -50,7 +50,7 @@ const state = {
         }
           ]*/
 
-}
+
 
 //methods that will manipulate the states
 //The methods --can not be asnyc--

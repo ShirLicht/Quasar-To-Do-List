@@ -1,7 +1,7 @@
 <template>
   <q-card>
     
-        <Modal-Header>Add a Task</Modal-Header>
+        <Modal-Header>Edit a Task</Modal-Header>
 
         <!--form: using 'prevent' in order to prevent the default action of the event -->
         <form @submit.prevent="submitForm">
@@ -32,20 +32,17 @@
 import {mapActions} from 'vuex'
 
 export default {
+    props: ['task', 'id'],
     data(){
         return{
             taskToSubmit: {
-                 name: '',
-                 dueDate: '',
-                 dueTime: '',
-                 completed: false,
             }
         }
     },
     methods: {
 
-       //map the 'addTask' action from the tasks store module to this component
-       ...mapActions('tasks', ['addTask']),
+       //map the 'updateTask' action from the tasks store module to this component
+       ...mapActions('tasks', [ 'updateTask']),
         submitForm() {
           
           //fire the validate method on the 'name' text input
@@ -61,8 +58,12 @@ export default {
         },
 
         submitTask(){
-            //send the new task to the app's storage
-            this.addTask(this.taskToSubmit)
+            //send the updated task to the app's storage
+            this.updateTask({
+                id: this.id,
+                updates: this.taskToSubmit
+
+            })
 
             //emit an event in order to close the 'Add Task' modal
             this.$emit('closeModal')
@@ -79,6 +80,9 @@ export default {
         'Modal-Task-Due-Date': require('components/Tasks/Modals/Shared/ModalTaskDueDate.vue').default,
         'Modal-Task-Due-Time': require('components/Tasks/Modals/Shared/ModalTaskDueTime.vue').default,
         'Modal-Buttons': require('components/Tasks/Modals/Shared/ModalButtons.vue').default
+    },
+    mounted(){
+       this.taskToSubmit = Object.assign({}, this.task) 
     }
 }
 </script>
