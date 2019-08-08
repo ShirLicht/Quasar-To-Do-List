@@ -1,8 +1,7 @@
 <template>
   <q-page class="q-pa-md">
 
-    <p>Todos List</p>
-      <q-list separator borderd>
+      <q-list v-if="Object.keys(tasks).length" separator borderd>
 
       <Task
        v-for="(task, key) in tasks"
